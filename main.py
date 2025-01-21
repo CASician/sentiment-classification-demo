@@ -21,7 +21,7 @@ labels = [1] * len(positive_reviews) + [0] * len(negative_reviews)  # 1 = positi
 
 
 # Crea un'istanza di CountVectorizer
-vectorizer = CountVectorizer(min_df=4)
+vectorizer = CountVectorizer(min_df=4, binary=True)
 
 X = vectorizer.fit_transform(corpus)
 
