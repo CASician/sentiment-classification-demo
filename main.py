@@ -1,4 +1,5 @@
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 import os
@@ -44,8 +45,9 @@ X_filtered = X_full[:, selected_indices]
 
 # ----------------------- Training ---------------------------------
 
-# Inizializza il modello Naive Bayes
-model = MultinomialNB()
+# Inizializza i modelli
+#model = MultinomialNB()
+model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
 # Esegui la cross-validation
 scores = cross_val_score(model, X_filtered, labels, cv=3)
