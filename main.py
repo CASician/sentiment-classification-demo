@@ -40,7 +40,7 @@ valid_bigrams = [i for i in bigram_indices if feature_frequencies[i] >= 7]
 unigram_indices = [i for i, feat in enumerate(feature_names) if len(feat.split()) == 1]
 
 # Combina unigrams e valid bigrams
-selected_indices = unigram_indices + valid_bigrams
+selected_indices = valid_bigrams
 X_filtered = X_full[:, selected_indices]
 
 # ----------------------- Training ---------------------------------
