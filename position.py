@@ -51,6 +51,7 @@ def position():
     scores = cross_val_score(model, X, labels, cv=3)
 
     # Stampa i risultati
-    print("Cross-validation scores:", scores)
-    print("Average accuracy:", scores.mean())
-    print("Numero di feature:", len(vectorizer.get_feature_names_out()))
+    print("Position tagging")
+    print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
+    print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
+    print("-------------------------------------------")

@@ -6,7 +6,7 @@ import os
 
 def topunigrams():
     # ----------------- Corpus preparation ------------------------------
-    
+
     # Percorso alle cartelle
     positive_path = "C:/Users/wewan/Desktop/Università/IA/mix20_rand700_tokens/tokens/pos"
     negative_path = "C:/Users/wewan/Desktop/Università/IA/mix20_rand700_tokens/tokens/neg"
@@ -38,6 +38,7 @@ def topunigrams():
     scores = cross_val_score(model, X, labels, cv=3)
 
     # Stampa i risultati
-    print("Cross-validation scores:", scores)
-    print("Average accuracy:", scores.mean())
-    print("Numero di feature (unigrams più frequenti):", len(vectorizer.get_feature_names_out()))
+    print("The top 3228 unigrams")
+    print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
+    print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
+    print("-------------------------------------------")

@@ -33,6 +33,7 @@ def unigrams_freq():
 
 
     # Stampa i risultati
-    print("Cross-validation scores:", scores)
-    print("Average accuracy:", scores.mean())
-    print("Numero di feature:", len(vectorizer.get_feature_names_out()))
+    print("Unigrams with Frequency")
+    print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
+    print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
+    print("-------------------------------------------")
