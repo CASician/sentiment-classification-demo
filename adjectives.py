@@ -33,14 +33,14 @@ def adjectives():
     # ----------------- Feature Extraction ------------------------------
 
     # Crea una matrice BoW filtrata per min_df=4
-    vectorizer = CountVectorizer(min_df=4)
+    vectorizer = CountVectorizer(min_df=4, binary=True)
     X = vectorizer.fit_transform(corpus)
 
     # ----------------------- Training ---------------------------------
 
     # Inizializza il modello Naive Bayes
-    #model = MultinomialNB()
-    model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
+    model = MultinomialNB()
+    # model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
     # Esegui la cross-validation
     scores = cross_val_score(model, X, labels, cv=3)

@@ -24,7 +24,7 @@ def bigrams():
     # ----------------- Feature Extraction ------------------------------
 
     # Crea una matrice con unigrams e bigrams
-    vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=4)  # Filtra direttamente gli unigrams con min_df=4
+    vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=4, binary=True)  # Filtra direttamente gli unigrams con min_df=4
     X_full = vectorizer.fit_transform(corpus)
 
     # Ottieni i nomi delle feature
@@ -56,5 +56,5 @@ def bigrams():
     # Stampa i risultati
     print("Only Bigrams")
     print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
-    print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
+    print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(selected_indices))  # 3 decimali
     print("-------------------------------------------")

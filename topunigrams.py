@@ -30,8 +30,8 @@ def topunigrams():
     # ----------------------- Training ---------------------------------
 
     # Inizializza il modello Naive Bayes
-    #model = MultinomialNB()
-    model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
+    model = MultinomialNB()
+    #model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
 
     # Esegui la cross-validation
