@@ -7,12 +7,14 @@ from topunigrams import topunigrams
 from unibi import unigrams_bigrams
 from unigramsPOS import unigramsPOS
 
+# Choose between NP and P
+model_wanted = 'P'
 
-unigrams_freq()
-unigramspresence()
-unigrams_bigrams()
-bigrams()
-unigramsPOS()
-adjectives()
-topunigrams()
-position()
+unigrams_freq(model_wanted)
+unigramspresence(model_wanted)
+unigrams_bigrams(model_wanted)
+bigrams(model_wanted)
+unigramsPOS(model_wanted)
+adjectives(model_wanted)
+topunigrams(model_wanted)
+position(model_wanted)

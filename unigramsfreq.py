@@ -1,9 +1,10 @@
 import os
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 
-def unigrams_freq():
+def unigrams_freq(model_wanted):
 
     positive_path = "C:/Users/wewan/Desktop/Università/IA/mix20_rand700_tokens/tokens/pos"
     negative_path = "C:/Users/wewan/Desktop/Università/IA/mix20_rand700_tokens/tokens/neg"
@@ -27,13 +28,16 @@ def unigrams_freq():
 
     # ----------------------- Training ---------------------------------
 
-    model = MultinomialNB()
+    if model_wanted == 'NB':
+        model = MultinomialNB()
+    else:
+        model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
     scores = cross_val_score(model, X, labels, cv=3)
 
 
     # Stampa i risultati
-    print("Unigrams with Frequency")
+    print("Unigrams with Frequency using " + model_wanted)
     print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
     print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
     print("-------------------------------------------")

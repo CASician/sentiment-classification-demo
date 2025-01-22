@@ -4,7 +4,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 import os
 
-def unigrams_bigrams():
+def unigrams_bigrams(model_wanted):
     # ----------------- Corpus preparation ------------------------------
 
     # Percorso alle cartelle
@@ -46,15 +46,16 @@ def unigrams_bigrams():
 
     # ----------------------- Training ---------------------------------
 
-    # Inizializza i modelli
-    model = MultinomialNB()
-    #model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
+    if model_wanted == 'NB':
+        model = MultinomialNB()
+    else:
+        model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
     # Esegui la cross-validation
     scores = cross_val_score(model, X_filtered, labels, cv=3)
 
     # Stampa i risultati
-    print("Unigrams and Bigrams")
+    print("Unigrams and Bigrams using " + model_wanted)
     print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
     print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(selected_indices))  # 3 decimali
     print("-------------------------------------------")

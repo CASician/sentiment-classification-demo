@@ -4,7 +4,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 import os
 
-def position():
+def position(model_wanted):
     # ----------------- Corpus preparation ------------------------------
 
     # Percorso alle cartelle
@@ -43,15 +43,16 @@ def position():
 
     # ----------------------- Training ---------------------------------
 
-    # Inizializza il modello Naive Bayes
-    model = MultinomialNB()
-    # model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
+    if model_wanted == 'NB':
+        model = MultinomialNB()
+    else:
+        model = Perceptron(max_iter=1000, tol=1e-3, random_state=42)
 
     # Esegui la cross-validation
     scores = cross_val_score(model, X, labels, cv=3)
 
     # Stampa i risultati
-    print("Position tagging")
+    print("Position tagging using " + model_wanted)
     print(f"CV: {[f'{score:.3f}' for score in scores]}")  # 3 decimali
     print(f"Average accuracy: {scores.mean():.3f}" + "  NF:", len(vectorizer.get_feature_names_out()))  # 3 decimali
     print("-------------------------------------------")
