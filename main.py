@@ -7,7 +7,7 @@ from topunigrams import topunigrams
 from unibi import unigrams_bigrams
 from unigramsPOS import unigramsPOS
 
-# Choose between NP and P
+# Choose between NB and P
 model_wanted = 'P'
 
 unigrams_freq(model_wanted)
