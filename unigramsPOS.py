@@ -31,7 +31,7 @@ def unigramsPOS(model_wanted):
     # ----------------- Feature Extraction ------------------------------
 
     # Crea una matrice con unigrams (POS tagged) e filtra con min_df=4
-    vectorizer = CountVectorizer(ngram_range=(1, 1), min_df=4, binary=True)  # Solo unigrams
+    vectorizer = CountVectorizer(min_df=4, binary=True)  # Solo unigrams
     X = vectorizer.fit_transform(corpus)
 
     # ----------------------- Training ---------------------------------
